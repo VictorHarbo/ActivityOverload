@@ -31,6 +31,11 @@ public class WeightController {
         weight.setDate(Objects.requireNonNullElseGet(date, () -> LocalDate.now().format(DateTimeFormatter.ISO_DATE)));
         return weightService.saveWeight(weight);
     }
+
+    @GetMapping("/min")
+    public double getMinWeight(){
+        return weightService.getMinWeight();
+    }
 }
 
 

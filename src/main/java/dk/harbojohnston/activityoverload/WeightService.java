@@ -2,12 +2,13 @@ package dk.harbojohnston.activityoverload;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class WeightService {
+public abstract class WeightService {
     @Autowired
     private WeightRepository weightRepository;
 
@@ -17,5 +18,9 @@ public class WeightService {
 
     public Weight saveWeight(Weight weight) {
         return weightRepository.save(weight);
+    }
+
+    public double getMinWeight() {
+        return weightRepository.getMinWeight();
     }
 }
