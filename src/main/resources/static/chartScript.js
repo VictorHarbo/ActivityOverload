@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
     const ctx = document.getElementById('myChart').getContext('2d');
-
     fetch('/weight')
         .then(response => response.json())
         .then(data => {
@@ -22,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 options: {
                     scales: {
                         y: {
-                            beginAtZero: true
+                            min: 85
                         }
                     }
                 }
