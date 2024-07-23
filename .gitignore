@@ -202,3 +202,4 @@ README.html
 
 src/main/resources/application.yml
 configToServer.sh
+/src/main/resources/application-server.yml
