@@ -23,4 +23,9 @@ public class WeightService {
     public double getMinWeight() {
         return weightRepository.getMinWeight();
     }
+
+    public int deleteWeightEntry(Long id){
+        weightRepository.deleteById(id);
+        return 0;
+    }
 }

@@ -42,6 +42,22 @@ public class WeightController {
     public double getMinWeight(){
         return weightService.getMinWeight();
     }
+
+    @GetMapping("/delete")
+    public String deleteByID(@RequestParam("id") Long id){
+        int result = weightService.deleteWeightEntry(id);
+
+        if (result != 0){
+            String mes = "Error happened while trying to delete record with ID: '"+ id + "'.";
+            log.warn(mes);
+            return mes;
+        }
+
+        log.info("Deleted record with id: '{}'", id);
+        return "Record with ID '" + id + "' successfully deleted";
+
+
+    }
 }
 
 
