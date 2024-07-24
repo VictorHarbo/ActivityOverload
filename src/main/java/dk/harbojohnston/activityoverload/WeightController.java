@@ -1,5 +1,7 @@
 package dk.harbojohnston.activityoverload;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,6 +13,8 @@ import java.util.Objects;
 @RestController
 @RequestMapping("/weight")
 public class WeightController {
+    private static final Logger log = LoggerFactory.getLogger(WeightController.class);
+
     @Autowired
     private WeightService weightService;
 
@@ -26,6 +30,8 @@ public class WeightController {
 
     @GetMapping("/add")
     public Weight addWeight(@RequestParam("value") Double value, @RequestParam(value = "date", required = false) String date) {
+        log.info("Adding entry to weights table with value: '{}'", value);
+
         Weight weight = new Weight();
         weight.setWeightInKilograms(value);
         weight.setDate(Objects.requireNonNullElseGet(date, () -> LocalDate.now().format(DateTimeFormatter.ISO_DATE)));
